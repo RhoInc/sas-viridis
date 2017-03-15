@@ -17,6 +17,9 @@ Optional parmeters:
    palette  =  Palette from which to select the colors.
                VALID: viridis|magma|plasma|inferno
                DEFAULT: viridis
+   greyscale=  Convert colors to greyscale using the luma formula.
+               VALID: yes|no
+               DEFAULT: no
    reverse  =  Provide colors in reverse order.
                VALID: yes|no
                DEFAULT: no
@@ -51,6 +54,7 @@ Example 2:
 %macro viridis
       (n=
       ,palette=viridis
+      ,greyscale=no
       ,reverse=no
       ,out=palette
       ,result=
@@ -80,6 +84,10 @@ Example 2:
    %let palette = %upcase(&palette);
    %if not (&palette in (VIRIDIS MAGMA PLASMA INFERNO)) %then
       %put %str(W)ARNING: unexpected value of &=palette;
+
+   %let greyscale = %upcase(&greyscale);
+   %if not (&greyscale in (YES Y NO N)) %then
+      %put %str(W)ARNING: unexpected value of &=greyscale;
 
    %let reverse = %upcase(&reverse);
    %if not (&reverse in (YES Y NO N)) %then
@@ -1154,6 +1162,10 @@ Example 2:
       g = 256*input(scan(raw,2,","),best.);
       b = 256*input(scan(raw,3,","),best.);
       rgb = "cx" || put(r,hex2.) || put(g,hex2.) || put(b,hex2.);
+      %if &greyscale in (YES Y) %then %do;
+         luma = 0.2126*r + 0.7152*g + 0.0722*b;
+         rgb = "cx" || repeat(put(luma,hex2.),3);
+      %end;
    run;
 
    *---------- create output dataset ----------;
