@@ -1,4 +1,3 @@
-# sas-viridis
 This repository contains a SAS macro for generating colors in the viridis color palette.
 
 But what is the viridis color palette, and why should I care? The authors of the related R package describe it quite nicely.
@@ -12,4 +11,8 @@ But what is the viridis color palette, and why should I care? The authors of the
 
 The R package authors go on to provide a good explanation of why viridis (and its cousins) are superior to most other color palettes on [r-project](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html). It's a good read if you have time.
 
-On the other hand, if you're ready to get started with the macro, feel free to jump straight to this repo's [wiki](https://github.com/RhoInc/sas-viridis/wiki).
+## Getting Started
+
+This repo's [wiki](https://github.com/RhoInc/sas-viridis/wiki) can get you started.
+
+There's also the [PharmaSUG paper](http://www.lexjansen.com/pharmasug/2017/QT/PharmaSUG-2017-QT06.pdf).
